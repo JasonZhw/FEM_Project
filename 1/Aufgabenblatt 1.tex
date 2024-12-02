@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage[a4paper]{geometry}
+\usepackage{listings}
+\usepackage{color}
+\geometry{left=2.54cm,right=2.54cm,top=1.0cm,bottom=1.0cm} 
+
+\usepackage{amssymb}
+\usepackage{pythonhighlight}
+\UseRawInputEncoding
+
+\usepackage{xcolor}
+
+\lstset{
+    language=Python,
+    commentstyle=\color{red}, % 设置注释的样式为红色
+    breaklines=true,         % 自动换行
+    breakatwhitespace=false, % 只在空格处换行
+    frame=single,            % 将代码框起来
+}
+
+
+
+
+\title{Numerische Implementierung der linearen FEM\\Aufgabenblatt 1}
+\author{Group: diamond\\
+        Yahuan Shi/494877\\
+        Chih-Cheng Huang/ 0494886\\
+        Xingyu Shang/ 498775\\
+        Haowang Zhang/ 498759\\ 
+       }
+\date{April 2024}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{Aufgabe 1}
+\subsection{The six lower-pair joints (ignore joint limits).}
+
+\begin{lstlisting}[language=Matlab]
+x = 1 + 2 + 3 + 4*2
+y = 1:5
+z = x + y;
+z2 = x + y
+
+x = 1:10
+y = x.^2
+plot (x, y)
+plot (x, y, 'go ')
+plot (x, y, 'rx -')
+\end{lstlisting}
+Q: Was ergibt der Doppelpunkt-Operator?\\
+\textcolor{red}{A}: $y=1:5$  erstellt eine Sequenz von 1 bis 5 in Schritten von 1. Daher ist der Wert von y [1, 2, 3, 4, 5].\\
+x = 1:10 erstellt eine Sequenz von 1 bis 10 in Schritten von 1. Daher ist der Wert von x [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].\\
+
+\begin{lstlisting}[language=Matlab]
+s = [1 2 3]
+t = [1; 2; 3]
+
+A = [1 2 3; 4 5 6; 7 8 9]
+A*t
+
+A*s
+s'
+A'
+A*s'
+
+t*s
+s*t
+
+s' .* t
+
+A^2
+A.^2
+\end{lstlisting}
+Q: Welche Funktion hat das Semikolon beim Anlegen einer Matrix/ eines Vektors?\\
+\textcolor{red}{A}: Das Semikolon wird verwendet, um Zeilen in der Matrix zu trennen. 
+Q: Welche Funktion hat es am Ende einer Zeile?\\
+\textcolor{red}{A}: Ein Semikolon beendet eine Zeile und weist MATLAB an, die Ergebnisse dieser Zeile nicht im Befehlsfenster auszugeben. Dies wird oft als „Ausgabe unterdrücken“ bezeichnet.
+Q:Welche Funktion hat der Apostroph als Operator?\\
+\textcolor{red}{A}: Der Apostroph wird verwendet, um die Transponierte einer Matrix oder eines Vektors zu erstellen. 
+Q:Welche Funktion hat der Punkt als Operator?\\
+\textcolor{red}{A}: Der Punkt wird verwendet, um elementweise Operationen auf Arrays durchzuführen. \\\\
+Statt der Definition von Matrizen und Vektoren von Hand knnen die folgenden Funktionen zum Erzeugen verwendet werden. Vektoren k¨onnen dabei wie Matrizen mit nur einer Spalte erzeugt werden. Beschreiben Sie jeweils die konkrete Funktion in Ihren eigenen Worten:\\
+
+\begin{lstlisting}[language=Matlab]
+n_row = 10
+n_col = 5
+M = zeros (n_row , n_col )
+%Diese Funktion erzeugt eine Matrix mit der angegebenen Anzahl von Zeilen (n_row)
+und Spalten (n_col), wobei alle Elemente auf Null gesetzt werden.
+I = eye( n_row )
+%Diese Funktion erzeugt eine Einheitsmatrix mit der angegebenen Anzahl von 
+Zeilen (n_row) und Spalten (n_row).
+%Die Diagonalelemente der Einheitsmatrix sind Eins, während alle anderen Elemente Null sind.
+U = ones (n_row , n_col )
+%Diese Funktion erzeugt eine Matrix mit der angegebenen Anzahl von Zeilen (n_row) und Spalten (n_col), wobei alle Elemente auf Eins gesetzt werden.
+R = rand (n_row , n_col )
+%Diese Funktion erzeugt eine Matrix mit der angegebenen Anzahl von Zeilen (n_row) und Spalten (n_col), wobei die Elemente zufällige Werte zwischen 0 und 1 haben.
+D = diag (1: n_col )
+%Diese Funktion erzeugt eine diagonale Matrix D mit den Zahlen 1 bis n_col auf der Hauptdiagonale.
+D2 = D + diag (1:( n_col -2) , 2)
+%Diese Funktion erzeugt eine diagonale Matrix D2, bei der die Zahlen 1 bis n_col-2 auf der zweiten Nebendiagonale platziert werden.
+
+E = U + R
+\end{lstlisting}
+
+
+\section{Aufgabe 2}
+Solution:\\
+
+
+
+
+
+\end{document}
+

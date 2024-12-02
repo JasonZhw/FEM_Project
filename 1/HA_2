@@ -1,0 +1,26 @@
+x − y-Tupel anlegen und 4 Darstellungen plotten:
+[x, y] = meshgrid(-10:0.1:10, -10:0.1:10);
+# zwei zweidimensionale Arrays mit Dimensionen 201*201 erzeugen
+sigma_xx = 3*x.^2 + 4*x.*y - 8*y.^2;
+sigma_yy = 2*x.^2 + x.*y + 3*y.^2;
+sigma_xy = -0.5*x.^2 - 6*x.*y - 2*x.^2;
+#Spannungszustand berechnen
+sigma_v = sqrt(0.5*((sigma_xx - sigma_yy).^2) + 3*(sigma_xy.^2));
+#von-Mises-Vergleichsspannung berechnen
+figure;
+subplot(2,2,1);
+scatter(x(:), y(:), 10, sigma_xx(:), 'filled');
+title('\sigma_{xx}');
+colorbar;
+subplot(2,2,2);
+scatter(x(:), y(:), 10, sigma_yy(:), 'filled');
+title('\sigma_{yy}');
+colorbar;
+subplot(2,2,3);
+scatter(x(:), y(:), 10, sigma_xy(:), 'filled');
+title('\sigma_{xy}');
+colorbar;
+subplot(2,2,4);
+scatter(x(:), y(:), 10, sigma_v(:), 'filled');
+title('von Mises');
+colorbar;
